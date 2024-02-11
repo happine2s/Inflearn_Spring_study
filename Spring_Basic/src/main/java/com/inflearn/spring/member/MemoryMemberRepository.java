@@ -12,7 +12,7 @@ public class MemoryMemberRepository implements MemberRepository{
     }
 
     @Override
-    public Member findyId(Long memberId) {
+    public Member finById(Long memberId) {
         return store.get(memberId);
     }
 }

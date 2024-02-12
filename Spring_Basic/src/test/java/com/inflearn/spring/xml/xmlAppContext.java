@@ -10,7 +10,8 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 public class xmlAppContext {
     @Test
     void xmlAppContext(){
-        ApplicationContext ac=new GenericXmlApplicationContext("appConfig.xml");
+        GenericXmlApplicationContext ac=new GenericXmlApplicationContext("appConfig.xml");
+
         MemberService memberService=ac.getBean("memberService",MemberService.class);
         Assertions.assertThat(memberService).isInstanceOf(MemberService.class);
     }

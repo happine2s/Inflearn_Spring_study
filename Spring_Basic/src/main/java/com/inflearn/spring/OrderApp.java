@@ -3,16 +3,20 @@ package com.inflearn.spring;
 import com.inflearn.spring.member.Grade;
 import com.inflearn.spring.member.Member;
 import com.inflearn.spring.member.MemberService;
-import com.inflearn.spring.member.MemberServiceImpl;
 import com.inflearn.spring.order.Order;
 import com.inflearn.spring.order.OrderService;
-import com.inflearn.spring.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
     public static void main(String[] args) {
-        AppConfig appConfig=new AppConfig();
-        MemberService memberService=appConfig.memberService();
-        OrderService orderService= appConfig.orderService();
+//        AppConfig appConfig=new AppConfig();
+//        MemberService memberService=appConfig.memberService();
+//        OrderService orderService= appConfig.orderService();
+
+        ApplicationContext applicationContext=new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService=applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService=applicationContext.getBean("orderService",OrderService.class);
 
         Long memberId=1L;
         Member member=new Member(memberId,"memberA", Grade.VIP);

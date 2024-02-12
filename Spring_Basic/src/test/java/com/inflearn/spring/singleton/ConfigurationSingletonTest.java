@@ -24,7 +24,16 @@ public class ConfigurationSingletonTest {
         System.out.println("memberRepository="+memberRepository);
 
         Assertions.assertThat(memberService.getMemberRepository()).isSameAs(memberRepository1);
-        Assertions.assertThat(memberService.getMemberRepository()).isSameAs(memberRepository2);
+        Assertions.assertThat(orderService.getMemberRepository()).isSameAs(memberRepository2);
         Assertions.assertThat(memberService.getMemberRepository()).isSameAs(memberRepository);
+    }
+
+    @Test
+    void configurrationDeep(){
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        AppConfig bean = ac.getBean(AppConfig.class);
+        System.out.println("bean="+bean.getClass());
+
+
     }
 }
